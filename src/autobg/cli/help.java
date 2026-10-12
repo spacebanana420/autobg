@@ -4,7 +4,7 @@ import autobg.io.stdout;
 
 //The program's help screens
 public class help {
-  private static final String version = "1.0";
+  private static final String version = "1.0.1";
   
   public static void printHelp() {
     String text =

@@ -29,6 +29,10 @@ public class fileio {
       if (config_start == -1 && line.toLowerCase().equals("[autostart]")) config_start = i+1;
       else if (line.length() >= 2 && line.charAt(0) == '[' && line.charAt(line.length()-1) == ']') config_end = i; //Check for the next category in Wayfire config, for example [core], this means [autostart] ended
     }
+    if (config_start == -1) {
+      stdout.error("Error parsing Wayfire config, no [autostart] section was found!");
+      return;
+    }
 
     boolean foundSetting = false;
     for (int i = config_start; i < config_end; i++) { //Find the autostart setting that runs swaybg or autoswaybg
