@@ -1,14 +1,18 @@
 ## autobg
-autobg is a command-line program for automatically changing the wallpaper using `swaybg` and saving it on Wayfire's config.
+autobg is a command-line program for setting and configuring the wallpaper on Wayfire using `swaybg`.
 
-The process of changing the current wallpaper is very manual on swaybg, especially on standalone window managers: it requires that you kill the current swaybg process, spawn a new one with the new file then disown the process on your shell and exit.
-On window managers you then also have to update their config file by changing the swaybg command that runs on start to save the new wallpaper.
-This program automates these tasks.
+### Features
+
+* Set wallpaper with `swaybg`, closing any other previous instance automatically.
+* Cycle through multiple wallpapers inside a path
+* Automatically save the `swaybg` or `autobg` command in your Wayfire config
+
+The program can also be used outside Wayfire, you only lose the ability to save the wallpaper in your desktop config.
 
 ## Requirements
 * Java 11 or newer
 * [swaybg](https://github.com/swaywm/swaybg)
-* [wayfire](https://github.com/WayfireWM/wayfire) (optional, config update is implemented for Wayfire only)
+* [wayfire](https://github.com/WayfireWM/wayfire) (optional)
 
 ## Download
 
