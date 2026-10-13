@@ -63,6 +63,10 @@ public class wallpaper {
     Process previousSwayInstance = null;      
     while (true) {
       for (String wallpaper : wallpapers) {
+        if (!new File(wallpaper).isFile()) {
+          stdout.error("Error setting wallpaper image at path "+wallpaper+"\nThe file seems to be missing! Skipping.");
+          continue;
+        }
         stdout.print("Setting wallpaper at path "+wallpaper);
         Process currentInstance = process.swaybg_setWallpaper(wallpaper, previousSwayInstance);
         previousSwayInstance = currentInstance;
