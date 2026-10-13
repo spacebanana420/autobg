@@ -44,7 +44,11 @@ public class wallpaper {
 
   //Parse the files of a directory, the ones that are valid images are set as wallpapers
   private static void setWallpaperDirectory(String path) {
-    var wallpapers = getWallpapersFromPath(path);
+    ArrayList<String> wallpapers = getWallpapersFromPath(path);
+    if (wallpapers.size() == 0) {
+      stdout.error("No supported images were found in "+path+"\nQuitting.");
+      return;
+    }
     int time = cli.getWallpaperTime();
     int time_ms;
     if (time == -1) {
