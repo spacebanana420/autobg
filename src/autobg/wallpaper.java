@@ -33,7 +33,7 @@ public class wallpaper {
   private static void setWallpaper(String path, boolean checkFormat) {
     if (checkFormat || supportedFormat(path)) {
       stdout.print("Setting wallpaper at path "+path);
-      process.swaybg_setWallpaper(path);
+      process.swaybg_setWallpaper(path, null);
       return;
     }
     stdout.error(
@@ -55,10 +55,13 @@ public class wallpaper {
       stdout.print("Cycling between wallpapers every "+time+" seconds.");
       time_ms = time * 1000;
     }
-    fileio.updateWayfireConfig("autobg -t "+time+" \""+path+"\"");      
+    fileio.updateWayfireConfig("autobg -t "+time+" \""+path+"\"");
+    Process previousSwayInstance = null;      
     while (true) {
       for (String wallpaper : wallpapers) {
-        setWallpaper(wallpaper, false);
+        stdout.print("Setting wallpaper at path "+path);
+        Process currentInstance = process.swaybg_setWallpaper(path, previousSwayInstance);
+        previousSwayInstance = currentInstance;
         try {Thread.sleep(time_ms);}
         catch (InterruptedException e) {stdout.error("Process was unexpectedly interrupted.");}
       }
