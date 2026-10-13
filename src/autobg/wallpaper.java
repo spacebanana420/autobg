@@ -24,14 +24,14 @@ public class wallpaper {
     }
     if (isDir) setWallpaperDirectory(wallpaperPath);
     else {
-      setWallpaper(wallpaperPath, true);
+      setWallpaper(wallpaperPath);
       fileio.updateWayfireConfig("swaybg -i \""+wallpaperPath+"\"");      
     }
   }
 
   //Set a single image as wallpaper
-  private static void setWallpaper(String path, boolean checkFormat) {
-    if (checkFormat || supportedFormat(path)) {
+  private static void setWallpaper(String path) {
+    if (supportedFormat(path)) {
       stdout.print("Setting wallpaper at path "+path);
       process.swaybg_setWallpaper(path, null);
       return;
@@ -60,7 +60,7 @@ public class wallpaper {
     while (true) {
       for (String wallpaper : wallpapers) {
         stdout.print("Setting wallpaper at path "+path);
-        Process currentInstance = process.swaybg_setWallpaper(path, previousSwayInstance);
+        Process currentInstance = process.swaybg_setWallpaper(wallpaper, previousSwayInstance);
         previousSwayInstance = currentInstance;
         try {Thread.sleep(time_ms);}
         catch (InterruptedException e) {stdout.error("Process was unexpectedly interrupted.");}
