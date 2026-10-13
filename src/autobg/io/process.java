@@ -16,7 +16,7 @@ public class process {
     //For cycling between multiple wallpapers, run the latest instance first and after a while kill the previous one
     //Makes it so the wallpaper change is seamless instead of resulting in a blank screen for a moment
     Process p = exec(false, "swaybg", "-i", wallpaperPath);
-    try {Thread.sleep(200);}
+    try {Thread.sleep(300);}
     catch (InterruptedException e) {stdout.error("Thread was unexpectedly interrupted!");}
     previousInstance.destroy();
     return p;
