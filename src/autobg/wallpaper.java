@@ -59,7 +59,7 @@ public class wallpaper {
     Process previousSwayInstance = null;      
     while (true) {
       for (String wallpaper : wallpapers) {
-        stdout.print("Setting wallpaper at path "+path);
+        stdout.print("Setting wallpaper at path "+wallpaper);
         Process currentInstance = process.swaybg_setWallpaper(wallpaper, previousSwayInstance);
         previousSwayInstance = currentInstance;
         try {Thread.sleep(time_ms);}
