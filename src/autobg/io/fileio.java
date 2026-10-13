@@ -35,13 +35,22 @@ public class fileio {
     }
 
     boolean foundSetting = false;
-    for (int i = config_start; i < config_end; i++) { //Find the autostart setting that runs swaybg or autoswaybg
+    for (int i = config_start; i < config_end; i++) { //Find the autostart setting that runs swaybg or autoswaybgi
+      if (config[i].charAt(0) == '#') continue; //Simple way to skip comments
       if (config[i].contains("swaybg") || config[i].contains("autobg")) {
         String newLine = wayfire_replaceLine(config[i], command);
         stdout.print_debug("Replacing line in Wayfire config\n * Before: "+config[i]+"\n * Now: "+newLine);
         config[i] = newLine;
         foundSetting = true;
         break;
+      }
+      if (config[i].contains("wpaperd")) {
+        stdout.print("Warning! wpaperd was found in your Wayfire config, make sure it does not conflict with swaybg.");
+        continue;
+      }
+      if (config[i].contains("wf-background")) {
+        stdout.print("Warning! wf-background was found in your Wayfire config, make sure it does not conflict with swaybg.");
+        continue;
       }
     }
     if (!foundSetting) { //If the Wayfire INI didn't have any wallpaper command on autostart yet, add one
