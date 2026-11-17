@@ -79,7 +79,8 @@ public class fileio {
     for (int i = 0; i < file.length; i++) {
       char c = (char)file[i];
       if (c == '\n') {
-        if (line.length() > 0) {lines.add(line.toString()); line = new StringBuilder();}
+        lines.add(line.toString());
+        line = new StringBuilder();
         continue;
       }
       line.append(c);
