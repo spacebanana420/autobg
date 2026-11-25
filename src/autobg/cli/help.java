@@ -4,7 +4,7 @@ import autobg.io.stdout;
 
 //The program's help screens
 public class help {
-  private static final String version = "1.0.2";
+  private static final String version = "1.1.0";
   
   public static void printHelp() {
     String text =
@@ -19,6 +19,7 @@ public class help {
       +"\n  * -h (--help)            prints this screen"
       +"\n  * -t <seconds>           how many seconds to change to the next wallpaper"
       +"\n  * -nc (--no-config)      do not update Wayfire's config"
+      +"\n  * -m (--mode) <mode>     sets how the wallpaper fills the screen (supported modes depend on swaybg: fit fill center stretch tile)"
       +"\n  * -c (--config) <path>   specify a custom path to the Wayfire INI config"
       +"\n  * -v (--verbose)         prints more runtime information"
       +"\n  * -d (--debug)           prints all runtime information"

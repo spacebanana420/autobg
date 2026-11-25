@@ -1,6 +1,6 @@
 package autobg;
 
-import autobg.io.stdout;
+import autobg.io.*;
 import autobg.cli.*;
 
 public class main {
@@ -8,6 +8,7 @@ public class main {
     init(args);
     if (cli.hasNoArguments()) {help.printSmallHelp(); return;}
     if (cli.getHelp()) {help.printHelp(); return;}
+    process.setWallpaperMode();
     wallpaper.setWallpaper();
   }
 

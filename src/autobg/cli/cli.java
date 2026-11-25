@@ -16,6 +16,7 @@ public class cli {
   public static boolean quietOutput() {return argumentExists("-q", "--quiet");}
   public static boolean disableConfigUpdate() {return argumentExists("-nc", "--no-config");}
 
+  public static String getWallpaperMode() {return getArgumentValue ("-m", "--mode");}
   public static int getWallpaperTime() {return getArgumentInt(false, "-t", "--time");}
   public static String getConfigPath() {
     String path = getArgumentValue("-c", "--config");
